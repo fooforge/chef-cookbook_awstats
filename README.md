@@ -1,4 +1,4 @@
-chef_cookbook-awstats [![Build Status](https://secure.travis-ci.org/fooforge/chef-cookbook_awstats.png)](http://travis-ci.org/fooforge/chef-cookbook_awstats])
+chef_cookbook-awstats [![Build Status](https://secure.travis-ci.org/fooforge/chef-cookbook_awstats.png)](http://travis-ci.org/fooforge/chef-cookbook_awstats)
 =========================
 
 Description
