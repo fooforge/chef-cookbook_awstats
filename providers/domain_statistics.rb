@@ -29,7 +29,6 @@ action :add do
               :log_type => new_resource.log_type,
               :log_format => new_resource.log_format,
               :log_separator => new_resource.log_separator,
-              :site_domain => new_resource.site_domain,
               :dns_lookup => new_resource.dns_lookup,
               :host_aliases => new_resource.host_aliases,
               :data_directory => new_resource.data_directory

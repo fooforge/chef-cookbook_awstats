@@ -29,7 +29,6 @@ attribute :log_location, :kind_of => String, :default => '/var/log/apache2/acces
 attribute :log_type, :kind_of => String, :default => 'web'
 attribute :log_format, :kind_of => String, :default => 'combined'
 attribute :log_separator, :kind_of => String, :default => " "
-attribute :site_domain, :default => :domain_name
 attribute :dns_lookup, :kind_of => Integer, :default => 1
 attribute :host_aliases, :kind_of => String, :default => "localhost 127.0.0.1"
 attribute :data_directory, :kind_of => String, :default => '/var/lib/awstats'
