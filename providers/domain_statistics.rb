@@ -56,7 +56,7 @@ action :add do
 
   cookbook_file "/usr/lib/cgi-bin/.htaccess" do
     source "htaccess"
-    cookbook "htaccess"
+    cookbook "awstats"
 
     owner "root"
     group "root"
