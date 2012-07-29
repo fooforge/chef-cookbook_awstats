@@ -17,11 +17,23 @@ Attributes
 
 * domain_name
 * log_location
-* log_type (possible W, S, M, F)
+* log_type
+  * web
+  * stream
+  * mail
+  * ftp
 * log_format
+  * combined
+  * iis
+  * webstar
+  * common
+  * OR custom
 * log_separator
 * site_domain
 * dns_lookup
+  * 0 = Nope
+  * 1 = Yip
+  * 2 = Static yip
 * host_alias
 
 Usage

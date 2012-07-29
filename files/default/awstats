@@ -1,0 +1,6 @@
+Alias /awstatsclasses "/usr/share/awstats/lib/"
+Alias /awstats-icon/ "/usr/share/awstats/icon/"
+Alias /awstatscss "/usr/share/doc/awstats/examples/css"
+ScriptAlias /awstats/ /usr/lib/cgi-bin/
+
+Options ExecCGI -MultiViews +SymLinksIfOwnerMatch

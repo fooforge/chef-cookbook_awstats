@@ -1,0 +1,4 @@
+AuthName "Hey, we're hiding something here! Please auth."
+AuthType Basic
+AuthUserFile /etc/apache2/htpasswd_awstats
+Require valid-user

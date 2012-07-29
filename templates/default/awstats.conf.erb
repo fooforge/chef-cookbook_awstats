@@ -60,8 +60,15 @@ LogFile="<%= @log_location %>"
 # Example: W
 # Default: W
 #
-LogType=<%= @log_type %>
-
+<% if @log_type == 'web' %>
+LogType=W
+<% elsif @log_type == 'stream' %>
+LogType=S
+<% elsif @log_type == 'mail' %>
+LogType=M
+<% elsif @log_type == 'ftp' %>
+LogType=F
+<% end %>
 
 # Enter here your log format (Must match your web server config. See setup
 # instructions in documentation to know how to configure your web server to
@@ -119,7 +126,17 @@ LogType=<%= @log_type %>
 # Example for IIS:
 # LogFormat = 2
 #
+<% if @log_format == 'combined' %>
+LogFormat=1
+<% elsif @log_format == 'iis' %>
+LogFormat=2
+<% elsif @log_format == 'webstar' %>
+LogFormat=3
+<% elsif @log_format == 'common' %>
+LogFormat=4
+<% else %>
 LogFormat=<%= @log_format %>
+<% end %>
 
 
 # If your log field's separator is not a space, you can change this parameter.
@@ -200,7 +217,7 @@ DNSLookup=<%= @dns_lookup %>
 # Example: "C:/awstats_data_dir"
 # Default: "."          (means same directory as awstats.pl)
 #
-DirData="/var/lib/awstats"
+DirData="<%= @data_directory %>"
 
 
 # Relative or absolute web URL of your awstats cgi-bin directory.

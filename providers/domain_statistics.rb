@@ -31,18 +31,40 @@ action :add do
               :log_separator => new_resource.log_separator,
               :site_domain => new_resource.site_domain,
               :dns_lookup => new_resource.dns_lookup,
-              :host_aliases => new_resource.host_aliases
+              :host_aliases => new_resource.host_aliases,
+              :data_directory => new_resource.data_directory
               )
   end
-end
 
-#  cron "awstats #{params[:name]}" do
-#    minute "*/10"
-#    command "/usr/lib/cgi-bin/awstats.pl -config=#{params[:name]} -update > /dev/null"
-#    user "root"
-#    mailto node[:awstats][:notify_contact]
-#  end
-#end
+  cron "awstats_#{new_resource.domain_name}" do
+    minute "*/3"
+    command "/usr/lib/cgi-bin/awstats.pl -config=#{new_resource.domain_name} -update > /dev/null"
+    user "root"
+    mailto "mike@fooforge.com"
+  end
+
+  cookbook_file "/etc/apache2/conf.d/awstats" do
+    source "awstats"
+    cookbook "awstats"
+
+    owner "root"
+    group "root"
+    mode "0755"
+
+    notifies :restart, resources(:service => "apache2")
+  end
+
+  cookbook_file "/usr/lib/cgi-bin/.htaccess" do
+    source "htaccess"
+    cookbook "htaccess"
+
+    owner "root"
+    group "root"
+    mode "0755"
+
+    notifies :restart, resources(:service => "apache2")
+  end
+end
 
 action :remove do
   # Here be dragons
