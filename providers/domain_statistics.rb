@@ -34,6 +34,7 @@ action :add do
               :host_aliases => new_resource.host_aliases,
               :data_directory => new_resource.data_directory
               )
+    new_resource.updated_by_last_action(true)
   end
 
   cron "awstats_#{new_resource.domain_name}" do
