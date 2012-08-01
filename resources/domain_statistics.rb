@@ -32,3 +32,4 @@ attribute :log_separator, :kind_of => String, :default => " "
 attribute :dns_lookup, :kind_of => Integer, :default => 1
 attribute :host_aliases, :kind_of => String, :default => "localhost 127.0.0.1"
 attribute :data_directory, :kind_of => String, :default => '/var/lib/awstats'
+attribute :skipped_hosts, :kind_of => Array, :default => [ "127.0.0.1", "localhost" ]

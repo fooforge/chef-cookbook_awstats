@@ -480,7 +480,7 @@ DefaultFile="index.php index.html"
 # Example: "localhost REGEX[^.*\.localdomain$]"
 # Default: ""
 #
-SkipHosts=""
+SkipHosts="<% @skipped_hosts.each do |item| %><%= item %> <% end %>"
 
 
 # Do not include access from clients with a user agent that match following
