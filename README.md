@@ -82,6 +82,62 @@ Those are the attributes that can be configured with the LWRP. For more detailed
       </td>
       <td><code>localhost 127.0.0.1</code></td>
     </tr>
+    <tr>
+      <td>skipped_hosts</td>
+      <td>
+        Array of hosts to be skipped when generating the statistics
+      </td>
+      <td><code>[ "127.0.0.1", "localhost" ]</code></td>
+    </tr>
+    <tr>
+      <td>cron_minute</td>
+      <td>
+        The interval in minutes defining how often the cronjob for generating statistics gets executed
+      </td>
+      <td><code>*/15</code> (every 15 minutes)</td>
+    </tr>
+    <tr>
+      <td>cron_hour</td>
+      <td>
+        The interval in hours defining how often the cronjob for generating statistics gets executed
+      </td>
+      <td><code>*</code></td>
+    </tr>
+    <tr>
+      <td>cron_day</td>
+      <td>
+        The interval in days defining how often the cronjob for generating statistics gets executed
+      </td>
+      <td><code>*</code></td>
+    </tr>
+    <tr>
+      <td>cron_month</td>
+      <td>
+        The interval in months defining how often the cronjob for generating statistics gets executed
+      </td>
+      <td><code>*</code></td>
+    </tr>
+    <tr>
+      <td>cron_weekday</td>
+      <td>
+        The interval in weekdays defining how often the cronjob for generating statistics gets executed
+      </td>
+      <td><code>*</code></td>
+    </tr>
+    <tr>
+      <td>cron_user</td>
+      <td>
+        The user in whose context the cronjob gets executed
+      </td>
+      <td>root</td>
+    </tr>
+    <tr>
+      <td>cron_contact</td>
+      <td>
+        The user that gets notified via E-Mail if the cronjob fails for some reason (it's presumed that SMTP is properly configured)
+      </td>
+      <td>root</td>
+    </tr>
   </tbody>
 </table>
 

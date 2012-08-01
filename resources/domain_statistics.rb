@@ -33,3 +33,10 @@ attribute :dns_lookup, :kind_of => Integer, :default => 1
 attribute :host_aliases, :kind_of => String, :default => "localhost 127.0.0.1"
 attribute :data_directory, :kind_of => String, :default => '/var/lib/awstats'
 attribute :skipped_hosts, :kind_of => Array, :default => [ "127.0.0.1", "localhost" ]
+attribute :cron_minute, :kind_of => String, :default => "*/15"
+attribute :cron_hour, :kind_of => String, :default => "*"
+attribute :cron_day, :kind_of => String, :default => "*"
+attribute :cron_month, :kind_of => String, :default => "*"
+attribute :cron_weekday, :kind_of => String, :default => "*"
+attribute :cron_user, :kind_of => String, :default => "root"
+attribute :cron_contact, :kind_of => String, :default => "root"

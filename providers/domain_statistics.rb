@@ -38,10 +38,14 @@ action :add do
   end
 
   cron "awstats_#{new_resource.domain_name}" do
-    minute "*/3"
+    minute new_resource.cron_minute
+    hour new_resource.cron_hour
+    day new_resource.cron_day
+    month new_resource.cron_month
+    weekday new_resource.cron_weekday
     command "/usr/lib/cgi-bin/awstats.pl -config=#{new_resource.domain_name} -update > /dev/null"
-    user "root"
-    mailto "mike@fooforge.com"
+    user new_resource.cron_user
+    mailto new_resource.cron_contact
   end
 
   cookbook_file "/etc/apache2/conf.d/awstats" do
