@@ -18,7 +18,25 @@
 #
 
 action :add do
-  template "/etc/awstats/awstats.#{new_resource.domain_name}.conf" do
+  service_name = case node['platform']
+                 when 'centos', 'scientific', 'redhat', 'amazon'
+                   'service[httpd]'
+                 when 'debian', 'ubuntu'
+                   'service[apache2]'
+                 else
+                   false
+                 end
+
+  awstats_confd = case node['platform']
+                  when 'centos', 'scientific', 'redhat', 'amazon'
+                    '/etc/httpd/conf.d/awstats'
+                  when 'debian', 'ubuntu'
+                    '/etc/apache2/conf.d/awstats'
+                  else
+                    false
+                  end
+
+ template "/etc/awstats/awstats.#{new_resource.domain_name}.conf" do
     source "awstats.conf.erb"
     cookbook "awstats"
     owner "root"
@@ -48,7 +66,7 @@ action :add do
     mailto new_resource.cron_contact
   end
 
-  cookbook_file "/etc/apache2/conf.d/awstats" do
+  cookbook_file awstats_confd do
     source "awstats"
     cookbook "awstats"
 
@@ -56,7 +74,7 @@ action :add do
     group "root"
     mode "0755"
 
-    notifies :restart, resources(:service => "apache2")
+    notifies :restart, service_name
   end
 
   cookbook_file "/usr/lib/cgi-bin/.htaccess" do
@@ -67,7 +85,7 @@ action :add do
     group "root"
     mode "0755"
 
-    notifies :restart, resources(:service => "apache2")
+    notifies :restart, service_name
   end
 end
 
