@@ -25,7 +25,12 @@ def initialize(*args)
 end
 
 attribute :domain_name, :kind_of => String, :name_attribute => true
-attribute :log_location, :kind_of => String, :default => '/var/log/apache2/access.log'
+attribute :log_location, :kind_of => String, :default => case node['platform']
+                                                         when 'centos', 'scientific', 'redhat', 'amazon'
+                                                           '/var/log/httpd/access.log'
+                                                         else
+                                                           '/var/log/apache2/access.log'
+                                                         end
 attribute :log_type, :kind_of => String, :default => 'web'
 attribute :log_format, :kind_of => String, :default => 'combined'
 attribute :log_separator, :kind_of => String, :default => " "
