@@ -23,7 +23,7 @@ action :add do
     cookbook "awstats"
     owner "root"
     group "root"
-    mode "0755"
+    mode "0644"
     variables(:domain_name => new_resource.domain_name,
               :log_location => new_resource.log_location,
               :log_type => new_resource.log_type,
@@ -54,7 +54,7 @@ action :add do
 
     owner "root"
     group "root"
-    mode "0755"
+    mode "0644"
 
     notifies :restart, resources(:service => "apache2")
   end
@@ -65,7 +65,7 @@ action :add do
 
     owner "root"
     group "root"
-    mode "0755"
+    mode "0644"
 
     notifies :restart, resources(:service => "apache2")
   end

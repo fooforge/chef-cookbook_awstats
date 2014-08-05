@@ -76,7 +76,7 @@ Those are the attributes that can be configured with the LWRP. For more detailed
       <td><code>1</code></td>
     </tr>
     <tr>
-      <td>host_alias</td>
+      <td>host_aliases</td>
       <td>
         Aliases for the domain_name
       </td>
