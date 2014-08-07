@@ -43,7 +43,7 @@ action :add do
     day new_resource.cron_day
     month new_resource.cron_month
     weekday new_resource.cron_weekday
-    command "/usr/lib/cgi-bin/awstats.pl -config=#{new_resource.domain_name} -update > /dev/null"
+    command "#{node[:awstats][:cgi_bin_path]}/awstats.pl -config=#{new_resource.domain_name} -update > /dev/null"
     user new_resource.cron_user
     mailto new_resource.cron_contact
   end
@@ -55,7 +55,7 @@ action :add do
     conf_path node[:awstats][:apache_conf_path]
   end
 
-  cookbook_file "/usr/lib/cgi-bin/.htaccess" do
+  cookbook_file "#{node[:awstats][:cgi_bin_path]}/.htaccess" do
     source "htaccess"
     cookbook "awstats"
 

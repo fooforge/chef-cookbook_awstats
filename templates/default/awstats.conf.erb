@@ -926,7 +926,7 @@ Lang="auto"
 # Example: "/usr/share/awstats/lang"
 # Default: "./lang" (means lang directory is in same location than awstats.pl)
 #
-DirLang="/usr/share/awstats/lang"
+DirLang="<%= node[:awstats][:data_path] %>/lang"
 
 
 # Show menu header with reports' links
