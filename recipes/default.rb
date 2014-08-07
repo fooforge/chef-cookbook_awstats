@@ -20,3 +20,7 @@
 package "awstats" do
   action :upgrade
 end
+
+include_recipe 'apache2'
+
+apache_module 'cgi'

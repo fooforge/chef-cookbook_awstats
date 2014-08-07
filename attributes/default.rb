@@ -18,5 +18,6 @@
 # limitations under the License.
 #
 
-default[:apache][:default_modules] << 'cgi'
+default[:awstats][:apache_conf_path] = "#{node[:apache][:dir]}/conf-available"
+default[:awstats][:apache_conf_filename] = "#{node[:awstats][:apache_conf_path]}/awstats.conf"
 
