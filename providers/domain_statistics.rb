@@ -37,7 +37,7 @@ action :add do
     new_resource.updated_by_last_action(true)
   end
 
-  cron "awstats_#{new_resource.domain_name}" do
+  cron_d "awstats_#{new_resource.domain_name}" do
     minute new_resource.cron_minute
     hour new_resource.cron_hour
     day new_resource.cron_day

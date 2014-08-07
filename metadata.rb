@@ -5,7 +5,10 @@ description      "Installs awstats and provides an LWRP for creating domain-spec
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.2.2"
 
-depends          "apache2", ">= 2.0.0"
-depends          "htpasswd"
+supports         "debian"
+supports         "ubuntu"
 
-supports         "debian", "ubuntu"
+depends          "apache2", ">= 2.0.0"
+depends          "cron"
+
+depends          "htpasswd"

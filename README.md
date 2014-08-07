@@ -62,9 +62,9 @@ Those are the attributes that can be configured with the LWRP. For more detailed
       <td>combined</td>
     </tr>
     <tr>
-      <td>log_seperator</td>
+      <td>log_separator</td>
       <td>
-        Type of log seperator.
+        Type of log separator.
       </td>
       <td><code>[[WHITESPACE]]</code></td>
     </tr>
