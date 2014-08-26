@@ -1,7 +1,7 @@
-Alias /awstatsclasses "<%= node[:awstats][:data_path] %>/lib/"
-Alias /awstats-icon/ "<%= node[:awstats][:data_path] %>/icon/"
+Alias /awstatsclasses "<%= node[:awstats][:data_path] %>/lib"
+Alias /awstats-icon "<%= node[:awstats][:data_path] %>/icon"
 Alias /awstatscss "<%= node[:awstats][:examples_path] %>/css"
-ScriptAlias /awstats/ <%= node[:awstats][:cgi_bin_path] %>
+ScriptAlias /awstats <%= node[:awstats][:cgi_bin_path] %>
 
 Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
 
