@@ -48,7 +48,7 @@ action :add do
     mailto new_resource.cron_contact
   end
 
-  cookbook_file "/etc/apache2/conf.d/awstats" do
+  cookbook_file "/etc/apache2/conf.d/awstats.conf" do
     source "awstats"
     cookbook "awstats"
 
