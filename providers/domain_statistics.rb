@@ -32,7 +32,8 @@ action :add do
               :dns_lookup => new_resource.dns_lookup,
               :host_aliases => new_resource.host_aliases,
               :data_directory => new_resource.data_directory,
-              :skipped_hosts => new_resource.skipped_hosts
+              :skipped_hosts => new_resource.skipped_hosts,
+              :skipped_files => new_resource.skipped_files,
               )
     new_resource.updated_by_last_action(true)
   end
