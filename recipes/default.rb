@@ -20,3 +20,12 @@
 package "awstats" do
   action :upgrade
 end
+
+# use a cron for each lwrp
+file "/etc/cron.d/awstats" do
+  action :delete
+end
+
+include_recipe 'apache2'
+
+apache_module 'cgi'

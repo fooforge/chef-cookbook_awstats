@@ -17,3 +17,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+default[:awstats][:apache_conf_path] = "#{node[:apache][:dir]}/conf-available"
+default[:awstats][:apache_conf_filename] = "#{node[:awstats][:apache_conf_path]}/awstats.conf"
+
+default[:awstats][:cgi_bin_path] = "/usr/lib/cgi-bin"
+default[:awstats][:data_path] = "/usr/share/awstats"
+default[:awstats][:examples_path] = "/usr/share/doc/awstats/examples"
+

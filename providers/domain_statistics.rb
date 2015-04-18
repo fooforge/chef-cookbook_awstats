@@ -23,7 +23,7 @@ action :add do
     cookbook "awstats"
     owner "root"
     group "root"
-    mode "0755"
+    mode "0644"
     variables(:domain_name => new_resource.domain_name,
               :log_location => new_resource.log_location,
               :log_type => new_resource.log_type,
@@ -32,42 +32,39 @@ action :add do
               :dns_lookup => new_resource.dns_lookup,
               :host_aliases => new_resource.host_aliases,
               :data_directory => new_resource.data_directory,
-              :skipped_hosts => new_resource.skipped_hosts
+              :skipped_hosts => new_resource.skipped_hosts,
+              :skipped_files => new_resource.skipped_files,
               )
     new_resource.updated_by_last_action(true)
   end
 
-  cron "awstats_#{new_resource.domain_name}" do
+  cron_d "awstats_#{new_resource.domain_name}" do
     minute new_resource.cron_minute
     hour new_resource.cron_hour
     day new_resource.cron_day
     month new_resource.cron_month
     weekday new_resource.cron_weekday
-    command "/usr/lib/cgi-bin/awstats.pl -config=#{new_resource.domain_name} -update > /dev/null"
+    command "#{node[:awstats][:cgi_bin_path]}/awstats.pl -config=#{new_resource.domain_name} -update > /dev/null"
     user new_resource.cron_user
     mailto new_resource.cron_contact
   end
 
-  cookbook_file "/etc/apache2/conf.d/awstats" do
-    source "awstats"
-    cookbook "awstats"
-
-    owner "root"
-    group "root"
-    mode "0755"
-
-    notifies :restart, resources(:service => "apache2")
+  apache_conf "awstats" do
+    enable false
+    cookbook 'awstats'
+    source 'awstats.erb'
+    conf_path node[:awstats][:apache_conf_path]
   end
 
-  cookbook_file "/usr/lib/cgi-bin/.htaccess" do
+  cookbook_file "#{node[:awstats][:cgi_bin_path]}/.htaccess" do
     source "htaccess"
     cookbook "awstats"
 
     owner "root"
     group "root"
-    mode "0755"
+    mode "0644"
 
-    notifies :restart, resources(:service => "apache2")
+    notifies :reload, resources(:service => "apache2")
   end
 end
 
